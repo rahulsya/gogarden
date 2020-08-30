@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Logo from "../assets/images/Logo.png";
 
 export default function navbar() {
   return (
@@ -8,7 +9,8 @@ export default function navbar() {
         <div className="flex justify-between items-center">
           <div className="font-bold text-xl text-green-500">
             <Link to="/">
-              <span className="font-extrabold">Go</span>Garden
+              {/* <span className="font-extrabold">Go</span>Garden */}
+              <img src={Logo} alt="logo" className="w-32" />
             </Link>
           </div>
           <nav className="">
