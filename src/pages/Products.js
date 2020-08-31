@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export default class Products extends Component {
   state = {
@@ -35,7 +36,7 @@ export default class Products extends Component {
     return (
       <div>
         <div className="container mx-auto px-5 mt-5">
-          <div className="text-green-700 font-semibold text-xl mb-5 text-gray-900">
+          <div className="text-green-700 font-semibold text-xl mb-5">
             Product List
             <div className="divide-y divide-gray-400 w-64">
               <div className="text-center py-2"></div>
@@ -47,19 +48,21 @@ export default class Products extends Component {
             {products.map((product, index) => {
               return (
                 <div key={index}>
-                  <div className="bg-green-300 px-1 py-1 rounded-lg">
-                    <img
-                      src={`https://source.unsplash.com/${product.imgUrl}/1600x900`}
-                      alt={`img-${index}`}
-                      className="rounded-lg"
-                    />
-                  </div>
-                  <div className="text-md font-semibold capitalize px-2 text-green-700 mb-2 mt-3">
-                    {product.title}
-                  </div>
-                  <span class="bg-green-500 rounded-full px-3 py-1 text-lg font-semibold text-gray-100">
-                    $ {product.price}
-                  </span>
+                  <Link to={`/product/${product.id}`}>
+                    <div className="bg-green-300 px-1 py-1 rounded-lg">
+                      <img
+                        src={`https://source.unsplash.com/${product.imgUrl}/1600x900`}
+                        alt={`img-${index}`}
+                        className="rounded-lg"
+                      />
+                    </div>
+                    <div className="text-md font-semibold capitalize px-2 text-green-700 mb-2 mt-3">
+                      {product.title}
+                    </div>
+                    <span class="bg-green-500 rounded-full px-3 py-1 text-lg font-semibold text-gray-100">
+                      $ {product.price}
+                    </span>
+                  </Link>
                 </div>
               );
             })}
