@@ -7,16 +7,27 @@ import Products from "./pages/Products";
 import DetailProduct from "./pages/DetailProduct";
 import ErrorPage from "./pages/ErrorPage";
 
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import reducer from "./store/reducer";
+
+const store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
 function App() {
   return (
     <>
-      <Navbar />
-      <Switch>
-        <Route exact path="/" component={LandingPage} />
-        <Route exact path="/products" component={Products} />
-        <Route exact path="/product/:id" component={DetailProduct} />
-        <Route component={ErrorPage} />
-      </Switch>
+      <Provider store={store}>
+        <Navbar />
+        <Switch>
+          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/products" component={Products} />
+          <Route exact path="/product/:id" component={DetailProduct} />
+          <Route component={ErrorPage} />
+        </Switch>
+      </Provider>
     </>
   );
 }
