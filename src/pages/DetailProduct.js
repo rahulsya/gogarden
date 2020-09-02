@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { ProductContext } from "../Context/ProductProvider";
+import { ADDTOCART } from "../store/action";
 
 class DetailProduct extends Component {
   constructor(props) {
@@ -9,7 +10,6 @@ class DetailProduct extends Component {
       slug: this.props.match.params.id,
     };
   }
-
   static contextType = ProductContext;
 
   render() {
@@ -65,7 +65,10 @@ class DetailProduct extends Component {
           </div>
 
           <div className="mx-auto mt-5">
-            <button className="inline-block rounded-lg px-3 py-1 font-semibold bg-green-500 text-gray-100 text-lg">
+            <button
+              className="inline-block rounded-lg px-3 py-1 font-semibold bg-green-500 text-gray-100 text-lg"
+              onClick={() => this.props.add({ product })}
+            >
               Add To Cart
             </button>
           </div>
@@ -79,5 +82,10 @@ const mapStateToProps = (store) => {
   const { cart, total } = store;
   return { cart, total };
 };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    add: (data) => dispatch({ type: ADDTOCART, payload: data }),
+  };
+};
 
-export default connect(mapStateToProps)(DetailProduct);
+export default connect(mapStateToProps, mapDispatchToProps)(DetailProduct);

@@ -7,7 +7,21 @@ const initalState = {
 
 export default function reducer(state = initalState, action) {
   if (action.type === ADDTOCART) {
-    console.log("you add the item");
+    const { product } = action.payload;
+
+    const checkItems = state.cart.find((item) => item.id === product.id);
+    if (checkItems) {
+      product.quantity += 1;
+      return {
+        ...state,
+      };
+    } else {
+      product.quantity = 1;
+      return {
+        ...state,
+        cart: [...state.cart, product],
+      };
+    }
   }
 
   return state;
