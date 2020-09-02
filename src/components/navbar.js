@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaShoppingCart } from "react-icons/fa";
 import Logo from "../assets/images/Logo.png";
 
 export default function navbar() {
@@ -22,10 +23,10 @@ export default function navbar() {
                 <Link to="/products">Product</Link>
               </li>
               <li className="mx-3">
-                <Link to="/">Contact</Link>
-              </li>
-              <li className="mx-3">
-                <Link to="/how">How it works ?</Link>
+                <Link to="/cart" className="flex items-center">
+                  Cart <FaShoppingCart />
+                  {"  "}
+                </Link>
               </li>
             </ul>
           </nav>

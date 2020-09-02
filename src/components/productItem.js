@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { ADDTOCART } from "../store/action";
+import { FaCartPlus } from "react-icons/fa";
 
 function productItem({ products, add }) {
   return (
@@ -13,13 +14,13 @@ function productItem({ products, add }) {
               <button
                 className="inline-block 
                 rounded-lg px-3 
-                py-1 font-semibold 
+                py-2 font-semibold 
                 bg-green-500 text-gray-100 
                 text-lg -mb-5 z-10
                 hover:bg-green-300"
                 onClick={() => add({ product })}
               >
-                +
+                <FaCartPlus />
               </button>
             </div>
             <div className="bg-green-300 px-1 py-1 rounded-lg">

@@ -42,7 +42,7 @@ class DetailProduct extends Component {
             );
           })}
         </div>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <div className="flex flex-col justify-center px-5 mt-5">
             <div className="font-semibold mb-5">
               <span>Description</span>
@@ -64,13 +64,24 @@ class DetailProduct extends Component {
             </div>
           </div>
 
-          <div className="mx-auto mt-5">
-            <button
-              className="inline-block rounded-lg px-3 py-1 font-semibold bg-green-500 text-gray-100 text-lg"
-              onClick={() => this.props.add({ product })}
-            >
-              Add To Cart
-            </button>
+          <div className="mt-5 px-5 mb-16">
+            <div className="bg-gray-100 shadow-lg rounded-lg py-8 px-12">
+              <div className="flex justify-between mb-3">
+                <div className="font-light text-green-600 text-2xl">Price</div>
+                <div className="font-semibold text-green-600 text-2xl">
+                  $ 20 / items
+                </div>
+              </div>
+              <button
+                className="hover:bg-green-400 
+                w-full rounded-sm px-3 
+                py-2 font-light bg-green-500 
+                text-gray-100 text-lg "
+                onClick={() => this.props.add({ product })}
+              >
+                Add To Cart
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -78,7 +89,6 @@ class DetailProduct extends Component {
   }
 }
 const mapStateToProps = (store) => {
-  console.log(store);
   const { cart, total } = store;
   return { cart, total };
 };
