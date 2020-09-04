@@ -1,9 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+import { connect } from "react-redux";
+// import { GET_TOTAL } from "../store/action";
+
 import { FaShoppingCart } from "react-icons/fa";
 import Logo from "../assets/images/Logo.png";
 
-export default function navbar() {
+function NavBar({ amount }) {
   return (
     <header className=" bg-gray-100">
       <div className="container mx-auto px-5 py-4 ">
@@ -25,7 +29,7 @@ export default function navbar() {
               <li className="mx-3">
                 <Link to="/cart" className="flex items-center">
                   Cart <FaShoppingCart />
-                  {"  "}
+                  {"  "}({amount})
                 </Link>
               </li>
             </ul>
@@ -35,3 +39,9 @@ export default function navbar() {
     </header>
   );
 }
+const mapStateToProps = (store) => {
+  const { amount } = store;
+  return { amount };
+};
+
+export default connect(mapStateToProps)(NavBar);
