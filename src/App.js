@@ -6,6 +6,7 @@ import LandingPage from "./pages/LandingPage";
 import Products from "./pages/Products";
 import DetailProduct from "./pages/DetailProduct";
 import CartProduct from "./pages/CartProduct";
+import Checkout from "./pages/Checkout";
 
 import ErrorPage from "./pages/ErrorPage";
 
@@ -28,6 +29,7 @@ function App() {
           <Route exact path="/products" component={Products} />
           <Route exact path="/product/:id" component={DetailProduct} />
           <Route exact path="/cart" component={CartProduct} />
+          <Route exact path="/checkout" component={Checkout} />
           <Route component={ErrorPage} />
         </Switch>
       </Provider>

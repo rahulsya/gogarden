@@ -68,7 +68,7 @@ export default function reducer(state = initalState, action) {
   if ((action.type = REMOVE)) {
     return {
       ...state,
-      cart: state.cart.filter((cartItem) => cartItem.id !== action.payload.id),
+      cart: state.cart.filter((cartItem) => cartItem.id !== action.payload),
     };
   }
 

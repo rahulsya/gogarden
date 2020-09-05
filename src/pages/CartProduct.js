@@ -1,14 +1,21 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import { connect } from "react-redux";
-// import EmptyCart from "../components/emptyCart";
+import { GET_TOTAL } from "../store/action";
+
+import EmptyCart from "../components/emptyCart";
 import CartItem from "../components/cartItem";
 import { FaAngleRight } from "react-icons/fa";
-import { GET_TOTAL } from "../store/action";
 
 function CartProduct({ cart = [], total, dispatch, amount }) {
   useEffect(() => {
     dispatch({ type: GET_TOTAL });
   });
+
+  if (cart.length === 0) {
+    return <EmptyCart />;
+  }
 
   return (
     <div className="container mx-auto px-5">
@@ -33,14 +40,15 @@ function CartProduct({ cart = [], total, dispatch, amount }) {
             </div>
 
             <div>
-              <button
+              <Link
+                to="/checkout"
                 className="bg-green-500 rounded-lg 
                   px-3 py-2 mt-2 text-lg font-semibold 
                   text-gray-100 mr-2 mb-2 hover:bg-green-300
                   flex items-center"
               >
                 Checkout <FaAngleRight />
-              </button>
+              </Link>
             </div>
           </div>
         </div>

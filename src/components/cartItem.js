@@ -1,11 +1,13 @@
 import React from "react";
+import { connect } from "react-redux";
+import { FaMinus, FaPlus, FaTrash } from "react-icons/fa";
+import { SET_AMOUNT, REMOVE } from "../store/action";
 
-export default function cartItem({ cart }) {
+function cartItem({ cart, set_amount, remove }) {
   return (
     <div>
       <div
-        className="flex flex-col lg:flex-row justify-between 
-        mr-4 items-center
+        className="flex flex-col lg:flex-row justify-between items-center
         font-semibold
         text-green-500"
       >
@@ -16,29 +18,47 @@ export default function cartItem({ cart }) {
             className="rounded-full w-20 h-20"
           />
         </div>
-        <div>{cart.name}</div>
+        <div className="w-64">{cart.name}</div>
+
         <div className="flex items-center mr-2">
           <button
-            className="bg-red-500 rounded-lg 
-          px-3 py-2 mt-2 text-lg font-semibold 
+            className="bg-green-500 rounded-lg 
+          px-2 py-2 mt-2 text-lg font-semibold 
           text-gray-100 mr-2 mb-2 hover:bg-green-300
           flex items-center"
+            onClick={() => set_amount("inc")}
           >
-            +
+            <FaPlus />
           </button>
           {cart.quantity}
           <button
-            className="bg-green-500 rounded-lg 
-          px-3 py-2 mt-2 text-lg font-semibold 
-          text-gray-100 ml-2 mb-2 hover:bg-green-300
+            className="bg-red-500 rounded-lg 
+          px-2 py-2 mt-2 text-lg font-semibold 
+          text-gray-100 ml-2 mb-2 hover:bg-red-300
           flex items-center"
+            onClick={() => {
+              if (cart.quantity === 1) {
+                return remove();
+              } else {
+                return set_amount("dec");
+              }
+            }}
           >
-            -
+            <FaMinus />
           </button>
         </div>
         <div>$ {cart.price}</div>
-        <div>x</div>
+        <button
+          className="bg-red-500 rounded-lg 
+        px-2 py-2 mt-2 text-lg font-semibold 
+        text-gray-100 ml-2 mb-2 hover:bg-red-300
+        flex items-center"
+          onClick={() => remove()}
+        >
+          <FaTrash />
+        </button>
       </div>
+
       <div className="divide-y divide-gray-400">
         <div className="text-center py-2"></div>
         <div className="text-center py-2"></div>
@@ -46,3 +66,13 @@ export default function cartItem({ cart }) {
     </div>
   );
 }
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const { id } = ownProps.cart;
+  return {
+    set_amount: (set) => dispatch({ type: SET_AMOUNT, payload: { id, set } }),
+    remove: () => dispatch({ type: REMOVE, payload: id }),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(cartItem);
