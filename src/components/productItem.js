@@ -1,10 +1,26 @@
 import React from "react";
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+
+import { connect } from "react-redux";
 import { ADDTOCART } from "../store/action";
+
 import { FaCartPlus } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function productItem({ products, add }) {
+  const notify = () => {
+    toast.success("Item Added To Cart!!", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       {products.map((product, index) => {
@@ -18,7 +34,10 @@ function productItem({ products, add }) {
                 bg-green-500 text-gray-100 
                 text-lg -mb-5 z-10
                 hover:bg-green-300"
-                onClick={() => add({ product })}
+                onClick={() => {
+                  add({ product });
+                  notify();
+                }}
               >
                 <FaCartPlus />
               </button>
@@ -41,6 +60,7 @@ function productItem({ products, add }) {
           </div>
         );
       })}
+      <ToastContainer />
     </div>
   );
 }
