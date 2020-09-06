@@ -16,7 +16,7 @@ export default function hero() {
         </div>
         <div className="lg:w-3/5 hidden lg:block">
           <div className="bg-white">
-            <PlantSvg className="w-full " style={{ height: 400 }} />
+            <PlantSvg className="w-full " />
           </div>
         </div>
       </div>

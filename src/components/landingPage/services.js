@@ -23,13 +23,13 @@ export default function services() {
           </div>
         </div>
         <div>
-          <OnlineSvg className="h-64" style={{ width: 400 }} />
+          <OnlineSvg />
         </div>
       </div>
 
       <div className="flex flex-col lg:flex-row items-center justify-center mb-16">
         <div>
-          <DeliverSvg className="h-64" style={{ width: 400 }} />
+          <DeliverSvg />
         </div>
         <div className="text-3xl font-light">
           <div>Fast Deliver</div>
@@ -49,7 +49,7 @@ export default function services() {
           </div>
         </div>
         <div>
-          <ControlSvg className="h-64" style={{ width: 400 }} />
+          <ControlSvg />
         </div>
       </div>
     </div>
