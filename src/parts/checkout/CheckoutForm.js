@@ -44,108 +44,115 @@ export default function CheckoutForm() {
     }
   };
 
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    alert();
+  };
+
   return (
     <div>
       <div className="title text-lg font-semibold">Complete Address</div>
       {/* form here */}
       <div className="form">
-        {/* <form action="#" onSubmit={onSubmit}>
+        <form action="#" onSubmit={handleOnSubmit}>
+          <div className="flex mt-5">
+            <div className="w-full md:w-1/2 px-3">
+              <label
+                className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                htmlFor="fullname"
+              >
+                FullName
+              </label>
+              <InputText
+                type="text"
+                name="fullName"
+                onChange={onHandeChange}
+                value={form.fullName}
+                placeholder="josh ipsum"
+              />
+              <span className="font-semibold text-sm text-red-400 capitalize">
+                {hasError.fullName}
+              </span>
+            </div>
 
-        </form> */}
-        <div className="flex mt-5">
-          <div className="w-full md:w-1/2 px-3">
-            <label
-              className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-              htmlFor="fullname"
-            >
-              FullName
-            </label>
-            <InputText
-              type="text"
-              name="fullName"
-              onChange={onHandeChange}
-              value={form.fullName}
-              placeholder="josh ipsum"
-            />
-            <span className="font-semibold text-sm text-red-400 capitalize">
-              {hasError.fullName}
-            </span>
+            <div className="w-full md:w-1/2 px-3">
+              <label
+                className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                htmlFor="email"
+              >
+                Email
+              </label>
+              <InputText
+                type="email"
+                name="email"
+                onChange={onHandeChange}
+                value={form.email}
+                placeholder="test@email.com"
+              />
+              <span className="font-semibold text-sm text-red-400 capitalize">
+                {hasError.email}
+              </span>
+            </div>
           </div>
 
-          <div className="w-full md:w-1/2 px-3">
-            <label
-              className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-              htmlFor="email"
-            >
-              Email
-            </label>
-            <InputText
-              type="email"
-              name="email"
-              onChange={onHandeChange}
-              value={form.email}
-              placeholder="test@email.com"
-            />
-            <span className="font-semibold text-sm text-red-400 capitalize">
-              {hasError.email}
-            </span>
+          <div className="flex mt-5">
+            <div className="w-full px-3">
+              <label
+                className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                htmlFor="phoneNumber"
+              >
+                Phone Number
+              </label>
+              <InputText
+                type="text"
+                name="phoneNumber"
+                onChange={onHandeChange}
+                value={form.phoneNumber}
+                placeholder="+62.."
+              />
+              <span className="font-semibold text-sm text-red-400 capitalize">
+                {hasError.phoneNumber}
+              </span>
+            </div>
           </div>
-        </div>
 
-        <div className="flex mt-5">
-          <div className="w-full px-3">
-            <label
-              className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-              htmlFor="phoneNumber"
-            >
-              Phone Number
-            </label>
-            <InputText
-              type="text"
-              name="phoneNumber"
-              onChange={onHandeChange}
-              value={form.phoneNumber}
-              placeholder="+62.."
-            />
-            <span className="font-semibold text-sm text-red-400 capitalize">
-              {hasError.phoneNumber}
-            </span>
+          <div className="flex mt-5">
+            <div className="w-full px-3">
+              <label
+                className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
+                htmlFor="address"
+              >
+                Address
+              </label>
+              <InputText
+                type="text"
+                name="address"
+                onChange={onHandeChange}
+                value={form.address}
+                placeholder="street lorem ipsum no.24"
+              />
+              <span className="font-semibold text-sm text-red-400 capitalize">
+                {hasError.address}
+              </span>
+            </div>
           </div>
-        </div>
 
-        <div className="flex mt-5">
-          <div className="w-full px-3">
-            <label
-              className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
-              htmlFor="address"
-            >
-              Address
-            </label>
-            <InputText
-              type="text"
-              name="address"
-              onChange={onHandeChange}
-              value={form.address}
-              placeholder="street lorem ipsum no.24"
-            />
-            <span className="font-semibold text-sm text-red-400 capitalize">
-              {hasError.address}
-            </span>
+          {/* buttn */}
+          <div className="flex mt-5 justify-end">
+            <div className="px-3">
+              {form.fullName !== "" &&
+                form.email !== "" &&
+                form.address !== "" && (
+                  <button
+                    type="submit"
+                    className="py-3 px-3 bg-green-500 text-white font-semibold font-lg"
+                  >
+                    Complete Order
+                  </button>
+                )}
+            </div>
           </div>
-        </div>
-
-        {/* buttn */}
-        <div className="flex mt-5 justify-end">
-          <div className="px-3">
-            {form.fullName !== "" &&
-              form.email !== "" &&
-              form.address !== "" && (
-                <button className="py-3 px-3 bg-green-500 text-white font-semibold font-lg">
-                  Complete Order
-                </button>
-              )}
-          </div>
-        </div>
+        </form>
       </div>
     </div>
   );

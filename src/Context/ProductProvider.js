@@ -7,11 +7,11 @@ class ProductProvider extends Component {
   state = {
     products: [],
     sortedProduct: [],
+    keyword: "",
   };
 
   componentDidMount() {
     let products = this.formatData(items);
-
     this.setState({
       products,
       sortedProduct: products,
@@ -35,12 +35,39 @@ class ProductProvider extends Component {
     return product;
   };
 
+  handleChange = (e) => {
+    const value = e.target.value;
+    const name = e.target.name;
+    console.log(value);
+    this.setState(
+      {
+        [name]: value,
+      },
+      this.filterProducts
+    );
+  };
+
+  filterProducts = () => {
+    let { products, keyword } = this.state;
+    let tempProduct = [...products];
+
+    tempProduct = tempProduct.filter((product) => {
+      const regex = new RegExp(keyword, "gi");
+      return product.name.match(regex);
+    });
+
+    this.setState({
+      sortedProduct: tempProduct,
+    });
+  };
+
   render() {
     return (
       <ProductContext.Provider
         value={{
           ...this.state,
           getProduct: this.getProduct,
+          handleChange: this.handleChange,
         }}
       >
         {this.props.children}
