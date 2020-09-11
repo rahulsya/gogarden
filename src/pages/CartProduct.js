@@ -14,7 +14,7 @@ function CartProduct({ cart = [], total, dispatch, amount }) {
   });
 
   if (cart.length === 0) {
-    return <EmptyCart />;
+    return <EmptyCart message="your cart is empty" />;
   }
 
   return (

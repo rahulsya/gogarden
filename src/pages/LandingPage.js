@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-import Hero from "../components/landingPage/hero";
-import Services from "../components/landingPage/services";
-import Featuredproduct from "../components/landingPage/Featuredproduct";
+import Hero from "../parts/landingPage/hero";
+import Services from "../parts/landingPage/services";
+import Featuredproduct from "../parts/landingPage/Featuredproduct";
 import Footer from "../components/footer";
 
 export default class LandingPage extends Component {

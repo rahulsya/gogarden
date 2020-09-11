@@ -1,59 +1,36 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import { connect } from "react-redux";
 
-import CheckoutForm from "../components/form/CheckoutForm";
+import EmptyCart from "../components/emptyCart";
+import CheckoutForm from "../parts/checkout/CheckoutForm";
+import BankAccount from "../parts/checkout/BankAccount";
+import OrderList from "../parts/checkout/OrderList";
 
 function Checkout({ cart, total, amount }) {
+  // if (cart.length === 0) {
+  //   return <EmptyCart message="no product you have order" />;
+  // }
   return (
     <div className="container mx-auto px-5">
-      <div className="capitalize mt-5 mb-5 text-md flex items-center text-gray-800">
-        <FaArrowLeft /> Back to cart
-      </div>
-      <div className="grid grid-cols-3 gap-4">
-        <div className="col-span-2">
+      <Link to="/cart" className="inline-block">
+        <div className="capitalize mt-5 mb-5 text-lg font-semibold flex items-center text-gray-800 ">
+          <FaArrowLeft /> Back to cart
+        </div>
+      </Link>
+      <div className="grid grid-cols-3 gap-4 mt-5">
+        <div className="col-span-3 lg:col-span-2">
           <CheckoutForm />
         </div>
-        <div className="col-span-1 ">
-          <div className="font-semibold text-xl mb-5 mt-5 text-gray-800">
-            Order List
-          </div>
-          {cart.map((cart) => {
-            return (
-              <div
-                className="flex flex-row 
-          items-center
-          justify-between 
-          font-semibold
-          text-white
-          px-3 py-3 rounded shadow-xl
-          bg-green-600
-          mb-4"
-                key={cart.id}
-              >
-                <div>
-                  <img
-                    src={cart.images[0]}
-                    alt={`cart-${cart.images[0]}`}
-                    className="rounded-full w-12 h-12"
-                  />
-                </div>
-                <div>{cart.name}</div>
-                <div>
-                  {cart.quantity} x ${cart.price}
-                </div>
-              </div>
-            );
-          })}
+        <div className="col-span-3 lg:col-span-1">
+          {/* order list */}
+          <OrderList cart={cart} total={total} />
+          {/* end order list */}
 
-          <div
-            className="font-semibold text-xl mb-5 mt-5 
-          text-right
-          text-gray-800
-          "
-          >
-            Total ${total}
-          </div>
+          {/* bank account */}
+          <BankAccount />
+          {/* end bank account */}
         </div>
       </div>
     </div>
