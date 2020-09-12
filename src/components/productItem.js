@@ -20,7 +20,13 @@ function productItem({ products, add }) {
       progress: undefined,
     });
   };
-
+  if (products.length === 0) {
+    return (
+      <div className="text-center text-xl font-semibold text-green-600 capitalize">
+        Product not found..
+      </div>
+    );
+  }
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       {products.map((product, index) => {
