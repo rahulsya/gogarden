@@ -9,9 +9,10 @@ import BankAccount from "../parts/checkout/BankAccount";
 import OrderList from "../parts/checkout/OrderList";
 
 function Checkout({ cart, total, amount }) {
-  // if (cart.length === 0) {
-  //   return <EmptyCart message="no product you have order" />;
-  // }
+  if (cart.length === 0) {
+    return <EmptyCart message="no product you have order" />;
+  }
+
   return (
     <div className="container mx-auto px-5">
       <Link to="/cart" className="inline-block">
@@ -21,7 +22,7 @@ function Checkout({ cart, total, amount }) {
       </Link>
       <div className="grid grid-cols-3 gap-4 mt-5">
         <div className="col-span-3 lg:col-span-2">
-          <CheckoutForm />
+          <CheckoutForm cart={cart} />
         </div>
         <div className="col-span-3 lg:col-span-1">
           {/* order list */}
