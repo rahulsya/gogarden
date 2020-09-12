@@ -8,6 +8,8 @@ class ProductProvider extends Component {
     products: [],
     sortedProduct: [],
     keyword: "",
+    sortByPrice: "all",
+    type: "all",
   };
 
   componentDidMount() {
@@ -38,7 +40,6 @@ class ProductProvider extends Component {
   handleChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
-    console.log(value);
     this.setState(
       {
         [name]: value,
@@ -48,13 +49,29 @@ class ProductProvider extends Component {
   };
 
   filterProducts = () => {
-    let { products, keyword } = this.state;
+    let { products, keyword, sortByPrice, type } = this.state;
     let tempProduct = [...products];
 
     tempProduct = tempProduct.filter((product) => {
       const regex = new RegExp(keyword, "gi");
       return product.name.match(regex);
     });
+
+    if (sortByPrice === "lowest") {
+      tempProduct = tempProduct.sort((min, max) => {
+        return min.price - max.price;
+      });
+    }
+
+    if (sortByPrice === "highest") {
+      tempProduct = tempProduct.sort((min, max) => {
+        return max.price - min.price;
+      });
+    }
+
+    if (type !== "all") {
+      tempProduct = tempProduct.filter((item) => item.type === type);
+    }
 
     this.setState({
       sortedProduct: tempProduct,
