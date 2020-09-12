@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import InputText from "../../components/InputText";
 
-export default function CheckoutForm() {
+export default function CheckoutForm({ cart }) {
   const [form, setForm] = useState({
     fullName: "",
     email: "",
@@ -46,7 +46,8 @@ export default function CheckoutForm() {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    alert();
+    console.log(form);
+    console.log(cart);
   };
 
   return (
