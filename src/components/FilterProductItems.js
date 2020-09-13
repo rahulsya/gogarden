@@ -14,7 +14,7 @@ export default function FilterProductItems() {
         <input
           type="text"
           name="keyword"
-          placeholder="search"
+          placeholder="How to plant..."
           className="w-full lg:w-1/2 px-3 py-4 border rounded shadow-lg mb-5"
           onChange={handleChange}
           value={keyword}
@@ -22,8 +22,11 @@ export default function FilterProductItems() {
       </div>
       <div className="flex flex-row justify-center items-center mb-12">
         <div className="flex flex-col items-center px-3">
-          <label htmlFor="sort" className="font-semibold text-sm mb-2">
-            Sort
+          <label
+            htmlFor="sort"
+            className="font-semibold text-sm mb-2 text-green-600"
+          >
+            Sort By
           </label>
           <select
             name="sortByPrice"
@@ -39,7 +42,10 @@ export default function FilterProductItems() {
         </div>
 
         <div className="flex flex-col items-center px-3">
-          <label htmlFor="category" className="font-semibold text-sm mb-2">
+          <label
+            htmlFor="category"
+            className="font-semibold text-sm mb-2 text-green-600"
+          >
             Category
           </label>
           <select
