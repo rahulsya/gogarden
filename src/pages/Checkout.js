@@ -4,13 +4,21 @@ import { FaArrowLeft } from "react-icons/fa";
 import { connect } from "react-redux";
 
 import EmptyCart from "../components/emptyCart";
+import Payment from "../components/Payment";
 import CheckoutForm from "../parts/checkout/CheckoutForm";
 import BankAccount from "../parts/checkout/BankAccount";
 import OrderList from "../parts/checkout/OrderList";
 
-function Checkout({ cart, total, amount }) {
+function Checkout({ cart, total }) {
+  const [isCompleted, setIsCompleted] = React.useState(false);
+
   if (cart.length === 0) {
     return <EmptyCart message="no product you have order" />;
+    // return <Payment />;
+  }
+
+  if (isCompleted === true) {
+    return <Payment />;
   }
 
   return (
@@ -22,7 +30,7 @@ function Checkout({ cart, total, amount }) {
       </Link>
       <div className="grid grid-cols-3 gap-4 mt-5">
         <div className="col-span-3 lg:col-span-2">
-          <CheckoutForm cart={cart} />
+          <CheckoutForm cart={cart} completedForm={setIsCompleted} />
         </div>
         <div className="col-span-3 lg:col-span-1">
           {/* order list */}
