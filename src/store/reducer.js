@@ -1,9 +1,17 @@
-import { ADDTOCART, GET_TOTAL, SET_AMOUNT, REMOVE } from "./action";
+import {
+  ADDTOCART,
+  GET_TOTAL,
+  SET_AMOUNT,
+  REMOVE,
+  SUBMIT_FORM,
+  CLEAR_CART,
+} from "./action";
 
 const initalState = {
   cart: [],
   total: 0,
   amount: 0,
+  address: [],
 };
 
 export default function reducer(state = initalState, action) {
@@ -63,6 +71,14 @@ export default function reducer(state = initalState, action) {
         return cartItem;
       }),
     };
+  }
+  // FORM
+  if (action.type === SUBMIT_FORM) {
+    return { ...state, address: action.payload };
+  }
+  // clear cart and address
+  if (action.type === CLEAR_CART) {
+    return { ...state, cart: [], address: [], total: 0, amount: 0 };
   }
 
   if ((action.type = REMOVE)) {
