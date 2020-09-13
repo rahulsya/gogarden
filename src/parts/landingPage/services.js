@@ -6,7 +6,7 @@ import { ReactComponent as ControlSvg } from "../../assets/images/control.svg";
 export default function services() {
   return (
     <div>
-      <div className="text-center mt-12 mb-5 font-light text-3xl">
+      <div className="text-center font-semibold text-green-600 mt-12 mb-5 font-light text-3xl">
         Our Service
         <div className="divide-y divide-gray-400 lg:px-64">
           <div className="text-center py-2"></div>
@@ -16,7 +16,7 @@ export default function services() {
       {/* service */}
       <div className="flex flex-col lg:flex-row items-center justify-center mb-16">
         <div className="text-3xl font-light">
-          <div>Full Online Course</div>
+          <div>We Teach Online</div>
           <div className="text-sm w-64">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit in
             aliquam nesciunt est? Ratione velit suscipit, quae atque iure optio.
@@ -32,7 +32,7 @@ export default function services() {
           <DeliverSvg />
         </div>
         <div className="text-3xl font-light">
-          <div>Fast Deliver</div>
+          <div>Deliver On Time</div>
           <div className="text-sm w-64">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit in
             aliquam nesciunt est? Ratione velit suscipit, quae atque iure optio.
@@ -42,7 +42,7 @@ export default function services() {
 
       <div className="flex flex-col lg:flex-row items-center justify-center mb-16">
         <div className="text-3xl font-light">
-          <div>Controll Your Progress</div>
+          <div>We Controll Your Progress</div>
           <div className="text-sm w-64">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit in
             aliquam nesciunt est? Ratione velit suscipit, quae atque iure optio.
