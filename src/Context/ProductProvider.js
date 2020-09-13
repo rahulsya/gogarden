@@ -7,6 +7,7 @@ class ProductProvider extends Component {
   state = {
     products: [],
     sortedProduct: [],
+    featuredProduct: [],
     keyword: "",
     sortByPrice: "all",
     type: "all",
@@ -14,9 +15,13 @@ class ProductProvider extends Component {
 
   componentDidMount() {
     let products = this.formatData(items);
+    let featuredProduct = products.filter(
+      (product) => product.featured === true
+    );
     this.setState({
       products,
       sortedProduct: products,
+      featuredProduct,
     });
   }
 
