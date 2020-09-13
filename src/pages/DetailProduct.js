@@ -65,17 +65,19 @@ class DetailProduct extends Component {
           </div>
 
           <div className="mt-5 px-5 mb-16">
-            <div className="bg-gray-100 shadow-lg rounded-lg py-8 px-12">
+            <div className=" shadow-lg rounded-lg py-8 px-12">
               <div className="flex justify-between mb-3">
-                <div className="font-light text-green-600 text-2xl">Price</div>
                 <div className="font-semibold text-green-600 text-2xl">
-                  $ 20 / items
+                  Price
+                </div>
+                <div className="font-semibold text-green-600 text-2xl">
+                  $ 20 / item
                 </div>
               </div>
               <button
                 className="hover:bg-green-400 
                 w-full rounded-sm px-3 
-                py-2 font-light bg-green-500 
+                py-2 font-semibold bg-green-500 
                 text-gray-100 text-lg "
                 onClick={() => this.props.add({ product })}
               >
