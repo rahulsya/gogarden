@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import { SUBMIT_FORM } from "../../store/action";
 
 import InputText from "../../components/InputText";
 
-export default function CheckoutForm({ cart }) {
+function CheckoutForm({ completedForm, sumbitForm }) {
   const [form, setForm] = useState({
     fullName: "",
     email: "",
@@ -46,8 +48,8 @@ export default function CheckoutForm({ cart }) {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    console.log(form);
-    console.log(cart);
+    completedForm(true);
+    sumbitForm(form);
   };
 
   return (
@@ -158,3 +160,11 @@ export default function CheckoutForm({ cart }) {
     </div>
   );
 }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    sumbitForm: (data) => {
+      dispatch({ type: SUBMIT_FORM, payload: data });
+    },
+  };
+};
+export default connect(null, mapDispatchToProps)(CheckoutForm);
