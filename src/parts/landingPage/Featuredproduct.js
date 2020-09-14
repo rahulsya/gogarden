@@ -1,24 +1,34 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { ProductContext } from "../../Context/ProductProvider";
+import { ProductContext } from "../../context/ProductProvider";
+
+import Fade from "react-reveal/Fade";
+import { motion } from "framer-motion";
 
 export default function Featuredproduct() {
   const context = useContext(ProductContext);
   const { featuredProduct } = context;
   return (
     <div>
-      <div className="text-center text-green-600 mt-12 mb-5 font-semibold text-3xl">
-        Featured Product
-        <div className="divide-y divide-gray-400 lg:px-64">
-          <div className="text-center py-2"></div>
-          <div className="text-center py-2"></div>
+      <Fade>
+        <div className="text-center text-green-600 mt-12 mb-5 font-semibold text-3xl">
+          Featured Product
+          <div className="divide-y divide-gray-400 lg:px-64">
+            <div className="text-center py-2"></div>
+            <div className="text-center py-2"></div>
+          </div>
         </div>
-      </div>
+      </Fade>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {featuredProduct.map((product, index) => {
           return (
-            <div key={index}>
+            <motion.div
+              initial={{ y: 100, scale: 0.8, opacity: 0 }}
+              animate={{ y: 0, scale: 1, opacity: 1 }}
+              transition={{ delay: 0.2 * index }}
+              key={index}
+            >
               <div className="bg-white px-1 py-1 rounded-lg">
                 <img
                   src={product.images[0]}
@@ -31,7 +41,7 @@ export default function Featuredproduct() {
                   {product.name}
                 </div>
               </Link>
-            </div>
+            </motion.div>
           );
         })}
       </div>
