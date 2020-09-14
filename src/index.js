@@ -4,16 +4,16 @@ import "./assets/main.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
-import { ProductProvider } from "./Context/ProductProvider";
+import { ProductProvider } from "./context/ProductProvider";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ProductProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ProductProvider>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <ProductProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </ProductProvider>,
+  // </React.StrictMode>,
   document.getElementById("root")
 );
 
