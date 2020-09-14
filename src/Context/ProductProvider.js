@@ -1,5 +1,6 @@
 import React, { Component, createContext } from "react";
-import items from "../data";
+// import items from "../data";
+import Client from "../contentful";
 
 const ProductContext = createContext();
 
@@ -13,16 +14,30 @@ class ProductProvider extends Component {
     type: "all",
   };
 
+  getData = async () => {
+    try {
+      let response = await Client.getEntries({
+        content_type: "gogarden",
+        order: "-sys.createdAt",
+      });
+
+      let products = this.formatData(response.items);
+      let featuredProduct = products.filter(
+        (product) => product.featured === true
+      );
+
+      this.setState({
+        products,
+        sortedProduct: products,
+        featuredProduct,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   componentDidMount() {
-    let products = this.formatData(items);
-    let featuredProduct = products.filter(
-      (product) => product.featured === true
-    );
-    this.setState({
-      products,
-      sortedProduct: products,
-      featuredProduct,
-    });
+    this.getData();
   }
 
   formatData(items) {
