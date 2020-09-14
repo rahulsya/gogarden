@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ProductContext } from "../context/ProductProvider";
+import { ProductContext } from "../Context/ProductProvider";
 
 import ProductItem from "../components/productItem";
 import FilterProductItems from "../components/FilterProductItems";

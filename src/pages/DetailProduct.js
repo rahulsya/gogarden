@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { ProductContext } from "../context/ProductProvider";
+import { ProductContext } from "../Context/ProductProvider";
 import { ADDTOCART } from "../store/action";
 
 import { motion } from "framer-motion";

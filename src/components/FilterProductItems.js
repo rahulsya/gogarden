@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ProductContext } from "../context/ProductProvider";
+import { ProductContext } from "../Context/ProductProvider";
 import { motion } from "framer-motion";
 
 export default function FilterProductItems() {

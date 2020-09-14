@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { ProductContext } from "../../context/ProductProvider";
+import { ProductContext } from "../../Context/ProductProvider";
 
 import Fade from "react-reveal/Fade";
 import { motion } from "framer-motion";
