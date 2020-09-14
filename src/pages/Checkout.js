@@ -9,6 +9,8 @@ import CheckoutForm from "../parts/checkout/CheckoutForm";
 import BankAccount from "../parts/checkout/BankAccount";
 import OrderList from "../parts/checkout/OrderList";
 
+import Fade from "react-reveal/Fade";
+
 function Checkout({ cart, total }) {
   const [isCompleted, setIsCompleted] = React.useState(false);
 
@@ -23,25 +25,29 @@ function Checkout({ cart, total }) {
 
   return (
     <div className="container mx-auto px-5">
-      <Link to="/cart" className="inline-block">
-        <div className="capitalize mt-5 mb-5 text-lg font-semibold flex items-center text-gray-800 ">
-          <FaArrowLeft /> Back to cart
-        </div>
-      </Link>
-      <div className="grid grid-cols-3 gap-4 mt-5">
-        <div className="col-span-3 lg:col-span-2">
-          <CheckoutForm cart={cart} completedForm={setIsCompleted} />
-        </div>
-        <div className="col-span-3 lg:col-span-1">
-          {/* order list */}
-          <OrderList cart={cart} total={total} />
-          {/* end order list */}
+      <Fade>
+        <Link to="/cart" className="inline-block">
+          <div className="capitalize mt-5 mb-5 text-lg font-semibold flex items-center text-gray-800 ">
+            <FaArrowLeft /> Back to cart
+          </div>
+        </Link>
+      </Fade>
+      <Fade delay={5}>
+        <div className="grid grid-cols-3 gap-4 mt-5">
+          <div className="col-span-3 lg:col-span-2">
+            <CheckoutForm cart={cart} completedForm={setIsCompleted} />
+          </div>
+          <div className="col-span-3 lg:col-span-1">
+            {/* order list */}
+            <OrderList cart={cart} total={total} />
+            {/* end order list */}
 
-          {/* bank account */}
-          <BankAccount />
-          {/* end bank account */}
+            {/* bank account */}
+            <BankAccount />
+            {/* end bank account */}
+          </div>
         </div>
-      </div>
+      </Fade>
     </div>
   );
 }

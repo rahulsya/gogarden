@@ -8,10 +8,12 @@ import EmptyCart from "../components/emptyCart";
 import CartItem from "../components/cartItem";
 import { FaAngleRight } from "react-icons/fa";
 
+import Fade from "react-reveal/Fade";
+
 function CartProduct({ cart = [], total, dispatch, amount }) {
   useEffect(() => {
     dispatch({ type: GET_TOTAL });
-  });
+  }, [dispatch]);
 
   if (cart.length === 0) {
     return <EmptyCart message="your cart is empty" />;
@@ -23,35 +25,39 @@ function CartProduct({ cart = [], total, dispatch, amount }) {
         Your Cart
       </div>
       <div className="grid grid-cols-3 gap-4">
-        <div className="col-span-2">
-          {cart.map((cart, index) => {
-            return <CartItem cart={cart} key={index} />;
-          })}
-        </div>
-        <div className="col-span-1">
-          <div className="px-4 py-4 bg-gray-100 shadow-lg rounded-lg ">
-            <div className="text-lg font-semibold text-green-600">
-              Order Summary
-            </div>
-            <div className=" font-light mt-2">Item(s) Total {amount}</div>
-            <div className="font-light">
-              Total Price
-              <div className="text-xl font-semibold"> $ {total}</div>
-            </div>
+        <Fade>
+          <div className="col-span-2">
+            {cart.map((cart, index) => {
+              return <CartItem cart={cart} key={index} />;
+            })}
+          </div>
+        </Fade>
+        <Fade delay={5}>
+          <div className="col-span-1">
+            <div className="px-4 py-4 bg-gray-100 shadow-lg rounded-lg ">
+              <div className="text-lg font-semibold text-green-600">
+                Order Summary
+              </div>
+              <div className=" font-light mt-2">Item(s) Total {amount}</div>
+              <div className="font-light">
+                Total Price
+                <div className="text-xl font-semibold"> $ {total}</div>
+              </div>
 
-            <div>
-              <Link
-                to="/checkout"
-                className="bg-green-500 rounded-lg 
-                  px-3 py-2 mt-2 text-lg font-semibold 
-                  text-gray-100 mr-2 mb-2 hover:bg-green-300
-                  flex items-center"
-              >
-                Checkout <FaAngleRight />
-              </Link>
+              <div>
+                <Link
+                  to="/checkout"
+                  className="bg-green-500 rounded-lg 
+                px-3 py-2 mt-2 text-lg font-semibold 
+                text-gray-100 mr-2 mb-2 hover:bg-green-300
+                flex items-center"
+                >
+                  Checkout <FaAngleRight />
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
+        </Fade>
       </div>
     </div>
   );
