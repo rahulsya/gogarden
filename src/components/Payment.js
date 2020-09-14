@@ -8,10 +8,17 @@ import { CLEAR_CART } from "../store/action";
 
 import OrderList from "../parts/checkout/OrderList";
 
+import { motion } from "framer-motion";
+
 function Payment({ cart, total, address, dispatch }) {
   return (
     <div className="container mx-auto px-5">
-      <div className="flex flex-col justify-center items-center mt-5">
+      <motion.div
+        initial={{ scale: 0.4, y: 100, opacity: 0 }}
+        animate={{ scale: 1, y: 0, opacity: 1 }}
+        transition={{ delay: 0.3 }}
+        className="flex flex-col justify-center items-center mt-5"
+      >
         <div className="shadow rounded w-full lg:w-1/2 py-4 ">
           <div className="font-semibold text-xl flex justify-center items-center text-center ">
             <FaCheck className="text-green-500" />
@@ -39,7 +46,7 @@ function Payment({ cart, total, address, dispatch }) {
             </Link>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

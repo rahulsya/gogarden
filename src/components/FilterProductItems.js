@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
-import { ProductContext } from "../Context/ProductProvider";
+import { ProductContext } from "../context/ProductProvider";
+import { motion } from "framer-motion";
 
 export default function FilterProductItems() {
   const context = useContext(ProductContext);
@@ -11,7 +12,9 @@ export default function FilterProductItems() {
   return (
     <div>
       <div className="flex flex-row justify-center">
-        <input
+        <motion.input
+          initial={{ scale: 1 }}
+          whileHover={{ scale: 1.1 }}
           type="text"
           name="keyword"
           placeholder="How to plant..."
