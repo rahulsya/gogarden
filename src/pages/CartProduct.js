@@ -13,7 +13,7 @@ import Fade from "react-reveal/Fade";
 function CartProduct({ cart = [], total, dispatch, amount }) {
   useEffect(() => {
     dispatch({ type: GET_TOTAL });
-  }, [dispatch]);
+  });
 
   if (cart.length === 0) {
     return <EmptyCart message="your cart is empty" />;
