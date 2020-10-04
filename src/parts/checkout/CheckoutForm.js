@@ -145,6 +145,7 @@ function CheckoutForm({ completedForm, sumbitForm }) {
             <div className="px-3">
               {form.fullName !== "" &&
                 form.email !== "" &&
+                form.phoneNumber !== "" &&
                 form.address !== "" && (
                   <button
                     type="submit"

@@ -10,19 +10,17 @@ import Checkout from "./pages/Checkout";
 
 import ErrorPage from "./pages/ErrorPage";
 
-import { createStore } from "redux";
 import { Provider } from "react-redux";
-import reducer from "./store/reducer";
-
-const store = createStore(
-  reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+import Store from "./store/";
+import { listen } from "./store/listener";
 
 function App() {
+  React.useEffect(() => {
+    listen();
+  }, []);
   return (
     <>
-      <Provider store={store}>
+      <Provider store={Store}>
         <Navbar />
         <Switch>
           <Route exact path="/" component={LandingPage} />
