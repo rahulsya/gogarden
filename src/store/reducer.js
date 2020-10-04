@@ -8,7 +8,9 @@ import {
 } from "./action";
 
 const initalState = {
-  cart: [],
+  cart: localStorage.getItem("cart")
+    ? JSON.parse(localStorage.getItem("cart"))
+    : [],
   total: 0,
   amount: 0,
   address: [],
@@ -16,21 +18,20 @@ const initalState = {
 
 export default function reducer(state = initalState, action) {
   if (action.type === ADDTOCART) {
-    const { product } = action.payload;
-
-    const checkItems = state.cart.find((item) => item.id === product.id);
+    let { id } = action.payload;
+    const checkItems = state.cart.find((item) => item.id === id);
     if (checkItems) {
-      product.quantity += 1;
+      action.payload.quantity += 1;
       return {
         ...state,
         amount: (state.amount += 1),
       };
     } else {
-      product.quantity = 1;
+      action.payload.quantity = 1;
       return {
         ...state,
         amount: (state.amount += 1),
-        cart: [...state.cart, product],
+        cart: [...state.cart, action.payload],
       };
     }
   }
@@ -84,7 +85,7 @@ export default function reducer(state = initalState, action) {
   if ((action.type = REMOVE)) {
     return {
       ...state,
-      cart: state.cart.filter((cartItem) => cartItem.id !== action.payload),
+      cart: state.cart.filter((cartItem) => cartItem.id !== action.id),
     };
   }
 
