@@ -1,13 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { connect } from "react-redux";
-// import { GET_TOTAL } from "../store/action";
+import { useSelector, useDispatch } from "react-redux";
+import { GET_TOTAL } from "../store/action";
 
 import { FaShoppingCart } from "react-icons/fa";
 import Logo from "../assets/images/Logo.png";
 
-function NavBar({ amount }) {
+function NavBar() {
+  let amount = useSelector((state) => state.amount);
+  let dispatch = useDispatch();
+
+  React.useEffect(() => {
+    dispatch({
+      type: GET_TOTAL,
+    });
+  }, [dispatch]);
+
   return (
     <header className=" bg-gray-100">
       <div className="container mx-auto px-5 py-4 ">
@@ -39,9 +48,9 @@ function NavBar({ amount }) {
     </header>
   );
 }
-const mapStateToProps = (store) => {
-  const { amount } = store;
-  return { amount };
-};
+// const mapStateToProps = (store) => {
+//   const { amount } = store;
+//   return { amount };
+// };
 
-export default connect(mapStateToProps)(NavBar);
+export default NavBar;
