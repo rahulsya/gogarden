@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { ProductContext } from "../Context/ProductProvider";
-import { ADDTOCART } from "../store/action";
+import { addToCart } from "../store/action";
 
 import { motion } from "framer-motion";
 import Fade from "react-reveal/Fade";
@@ -115,7 +115,7 @@ class DetailProduct extends Component {
                 py-2 font-semibold bg-green-500 
                 text-gray-100 text-lg "
                   onClick={() => {
-                    this.props.add({ product });
+                    this.props.add(product);
                     this.notify();
                   }}
                 >
@@ -137,7 +137,7 @@ const mapStateToProps = (store) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    add: (data) => dispatch({ type: ADDTOCART, payload: data }),
+    add: (data) => dispatch(addToCart(data)),
   };
 };
 

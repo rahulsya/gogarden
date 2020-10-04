@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { FaMinus, FaPlus, FaTrash } from "react-icons/fa";
-import { SET_AMOUNT, REMOVE } from "../store/action";
+import { setItem, removeItem } from "../store/action";
 
 function cartItem({ cart, set_amount, remove }) {
   return (
@@ -70,8 +70,8 @@ function cartItem({ cart, set_amount, remove }) {
 const mapDispatchToProps = (dispatch, ownProps) => {
   const { id } = ownProps.cart;
   return {
-    set_amount: (set) => dispatch({ type: SET_AMOUNT, payload: { id, set } }),
-    remove: () => dispatch({ type: REMOVE, payload: id }),
+    set_amount: (set) => dispatch(setItem(id, set)),
+    remove: () => dispatch(removeItem(id)),
   };
 };
 

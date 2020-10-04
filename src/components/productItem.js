@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
-import { ADDTOCART } from "../store/action";
+import { addToCart } from "../store/action";
 
 import { FaCartPlus } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
@@ -50,7 +50,7 @@ function productItem({ products, add }) {
                 text-lg -mb-5 z-10
                 hover:bg-green-300"
                 onClick={() => {
-                  add({ product });
+                  add(product);
                   notify();
                 }}
               >
@@ -85,7 +85,7 @@ function productItem({ products, add }) {
 const mapDispatchToProps = (dispatch) => {
   return {
     add: (data) => {
-      dispatch({ type: ADDTOCART, payload: data });
+      dispatch(addToCart(data));
     },
   };
 };
